@@ -36,7 +36,11 @@ defmodule SICP.Ch1.Ex05 do
   ;; The evaluation never ends because p is infinitely expanding
 
   (test 0 (p)) ; then (p) -> (p)
+  ;;       *
+
   (test 0 (p)) ; then (p) -> (p)
+  ;;       *
+
   (test 0 (p)) ; ect.
   ```
 
@@ -48,10 +52,10 @@ defmodule SICP.Ch1.Ex05 do
   (test 0 (p)) ; then enter test procedure
 
   (if (= x 0) 0 y) ; then x -> 0
-  ;      \u2191
+  ;;     *
 
   (if (= 0 0) 0 y) ; then end if
-  ;           \u2191
+  ;;          *
 
   0
   ```
