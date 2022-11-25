@@ -18,12 +18,12 @@ defmodule SICP.Ch1.Ex07 do
 
   @spec sqrt_iter(float(), number()) :: float()
   defp sqrt_iter(guess, x) do
-    improved = improve(guess, x)
+    improved_guess = improve(guess, x)
 
-    if good_enough?(guess, improved) do
+    if good_enough?(improved_guess, guess) do
       guess
     else
-      sqrt_iter(improved, x)
+      sqrt_iter(improved_guess, x)
     end
   end
 
