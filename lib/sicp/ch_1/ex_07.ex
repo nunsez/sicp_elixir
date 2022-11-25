@@ -30,7 +30,9 @@ defmodule SICP.Ch1.Ex07 do
   @delta 1.0e-7
 
   @spec good_enough?(number(), number()) :: boolean()
-  defp good_enough?(guess, x), do: abs(x - guess) < @delta
+  defp good_enough?(improved_guess, guess) do
+    abs(guess - improved_guess) < @delta
+  end
 
   @spec improve(float(), number()) :: float()
   defp improve(guess, x), do: average(guess, x / guess)
