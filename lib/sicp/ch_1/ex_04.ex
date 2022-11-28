@@ -7,8 +7,8 @@ defmodule SICP.Ch1.Ex04 do
   following procedure:
 
   ```scheme
-    (define (a-plus-abs-b a b)
-      ((if (> b 0) + -) a b))
+  (define (a-plus-abs-b a b)
+    ((if (> b 0) + -) a b))
   ```
 
   Answer:
@@ -19,15 +19,15 @@ defmodule SICP.Ch1.Ex04 do
   If b is a positive:
 
   ```scheme
-    (define (a-plus-abs-b a b)
-      (+ a b)
+  (define (a-plus-abs-b a b)
+    (+ a b))
   ```
 
   If b is a negative or zero:
 
   ```scheme
-    (define (a-plus-abs-b a b)
-      (- a b)
+  (define (a-plus-abs-b a b)
+    (- a b))
   ```
   """
 end
