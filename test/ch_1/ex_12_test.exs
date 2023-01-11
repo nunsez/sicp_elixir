@@ -1,4 +1,4 @@
-defmodule SICP.Ch1.Ex11Test do
+defmodule SICP.Ch1.Ex12Test do
   use ExUnit.Case
   doctest SICP.Ch1.Ex12
 
