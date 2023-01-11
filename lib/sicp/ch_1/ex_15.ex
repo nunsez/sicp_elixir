@@ -46,15 +46,12 @@ defmodule SICP.Ch1.Ex15 do
       approximately O(log3(n)) because angle is decreases by a factor of 3 with each step
 
     Space:
-      the same as the step count, because we do not have the tail calling optimization here
+      the same as the step count, because of recursion
   """
 
   @spec sine(number()) :: number()
   def sine(angle) when abs(angle) > 0.1, do: p(sine(angle / 3.0))
-  def sine(angle) do
-    Process.info(self()) |> IO.inspect()
-    angle
-  end
+  def sine(angle), do: angle
 
   @spec cube(number()) :: number()
   defp cube(x), do: x * x * x
