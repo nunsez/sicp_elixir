@@ -14,7 +14,6 @@ defmodule SICP.Ch1.Ex19Test do
     assert fib(2) === 1
   end
 
-
   @tag task: 119
   test "fib 7" do
     assert fib(7) === 13
