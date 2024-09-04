@@ -57,5 +57,5 @@ defmodule SICP.Ch1.Ex15 do
   defp cube(x), do: x * x * x
 
   @spec p(number()) :: number()
-  defp p(x), do: (3 * x) - (4 * cube(x))
+  defp p(x), do: 3 * x - 4 * cube(x)
 end

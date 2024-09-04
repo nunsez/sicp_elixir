@@ -75,23 +75,27 @@ defmodule SICP.Ch1.Ex19 do
   def fib(count), do: fib_iter(1, 0, 0, 1, count)
 
   @spec fib_iter(
-    pos_integer(), non_neg_integer(), non_neg_integer(), pos_integer(), non_neg_integer()
-  ) :: pos_integer()
+          pos_integer(),
+          non_neg_integer(),
+          non_neg_integer(),
+          pos_integer(),
+          non_neg_integer()
+        ) :: pos_integer()
   def fib_iter(a, b, p, q, count)
 
   def fib_iter(_, b, _, _, 0), do: b
 
   def fib_iter(a, b, p, q, count) when is_even(count) do
-    new_p = (q * q) + (p * p)
-    new_q = (q * q) + (2 * p * q)
+    new_p = q * q + p * p
+    new_q = q * q + 2 * p * q
     new_count = div(count, 2)
 
     fib_iter(a, b, new_p, new_q, new_count)
   end
 
   def fib_iter(a, b, p, q, count) do
-    new_a = (b * q) + (a * q) + (a * p)
-    new_b = (b * p) + (a * q)
+    new_a = b * q + a * q + a * p
+    new_b = b * p + a * q
     new_count = count - 1
 
     fib_iter(new_a, new_b, p, q, new_count)

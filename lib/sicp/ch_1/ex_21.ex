@@ -29,8 +29,8 @@ defmodule SICP.Ch1.Ex21 do
     end
   end
 
-  @spec square(non_neg_integer()) :: float()
-  defp square(n) when n >= 0, do: :math.sqrt(n)
+  @spec square(number()) :: number()
+  defp square(x), do: x * x
 
   @spec divides?(integer(), integer()) :: boolean()
   defp divides?(a, b), do: rem(b, a) == 0

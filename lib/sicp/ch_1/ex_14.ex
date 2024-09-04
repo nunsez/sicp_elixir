@@ -78,7 +78,7 @@ defmodule SICP.Ch1.Ex14 do
 
   defp cc(amount, kinds_of_coins) do
     cc(amount, kinds_of_coins - 1) +
-    cc(amount - first_denomination(kinds_of_coins), kinds_of_coins)
+      cc(amount - first_denomination(kinds_of_coins), kinds_of_coins)
   end
 
   @spec first_denomination(pos_integer()) :: pos_integer()
