@@ -25,40 +25,47 @@ defmodule SICP.Ch1.Ex23 do
   ```
   1_000
   --------------------
-  1009 *** 55µs -> 28µs
-  1013 *** 49µs -> 29µs
-  1019 *** 56µs -> 28µs
-  average: 53.33 -> 28.33
-  speed up: 53.33 / 28.33 = 1.88
+  1009 *** 473.72 ns -> 298.01 ns
+  1013 *** 467.63 ns -> 289.10 ns
+  1019 *** 469.37 ns -> 289.55 ns
+  average: 470.24 -> 292.22
+  speed up: 470.24 / 292.22 = 1.61
   ___________________
 
   10_000
   ___________________
-  10007 *** 697µs -> 253µs
-  10009 *** 509µs -> 238µs
-  10037 *** 512µs -> 234µs
-  average: 572.66 -> 241.66
-  speed up: 572.66 / 241.66 = 2.37
+  10007 *** 1.44 μs -> 0.80 μs
+  10009 *** 1.43 μs -> 0.80 μs
+  10037 *** 1.45 μs -> 0.80 μs
+  average: 1.44 -> 0.80
+  speed up: 1.44 / 0.80 = 1.8
   ___________________
 
   100_000
   ___________________
-  100003 *** 4868µs -> 1815µs
-  100019 *** 4919µs -> 1829µs
-  100043 *** 4813µs -> 2045µs
-  average: 4866.66 -> 1896.33
-  speed up: 4866.66 / 1896.33 = 2.57
+  100003 *** 4.57 μs -> 2.44 μs
+  100019 *** 4.52 μs -> 2.42 μs
+  100043 *** 4.50 μs -> 2.45 μs
+  average: 4.53 -> 2.44
+  speed up: 4.53 / 2.44 = 1.86
   ___________________
 
   1_000_000
   ___________________
-  1000003 *** 35359µs -> 17795µs
-  1000033 *** 36395µs -> 17901µs
-  1000037 *** 36517µs -> 17927µs
-  average: 36090.33 -> 17874.33
-  speed up: 36090.33 / 17874.33 = 2.02
+  1000003 *** 14.49 μs -> 7.60 μs
+  1000033 *** 14.18 μs -> 7.67 μs
+  1000037 *** 14.05 μs -> 7.59 μs
+  average: 14.24 -> 7.62
+  speed up: 14.24 / 7.62 = 1.87
   ___________________
   ```
+
+  The speed up is not 2 times, but close to it. This can be explained by the fact
+  that in procedure find_divisor not only calls to procedure find_divisor occur,
+  but also to other procedures (square, divides?), which slightly reduces the
+  degree of speed up.
+
+  As the order of numbers increases, the speed up remains practically unchanged.
   """
 
   @prime_numbers_max_count 3
@@ -80,7 +87,7 @@ defmodule SICP.Ch1.Ex23 do
 
   @spec timed_prime_test(non_neg_integer()) :: boolean()
   def timed_prime_test(n) do
-    result = :timer.tc(fn -> prime?(n) end)
+    result = :timer.tc(fn -> prime?(n) end, :nanosecond)
 
     case result do
       {elapsed_time, true} ->
@@ -99,7 +106,7 @@ defmodule SICP.Ch1.Ex23 do
   end
 
   @spec prime?(non_neg_integer()) :: boolean()
-  defp prime?(n), do: smallest_divisor(n) == n
+  def prime?(n), do: smallest_divisor(n) == n
 
   @spec smallest_divisor(non_neg_integer()) :: integer()
   defp smallest_divisor(n), do: find_divisor(n, 2)
@@ -113,8 +120,8 @@ defmodule SICP.Ch1.Ex23 do
     end
   end
 
-  @spec square(non_neg_integer()) :: float()
-  defp square(n) when n >= 0, do: :math.sqrt(n)
+  @spec square(number()) :: number()
+  defp square(x), do: x * x
 
   @spec divides?(pos_integer(), non_neg_integer()) :: boolean()
   defp divides?(a, b), do: rem(b, a) == 0
