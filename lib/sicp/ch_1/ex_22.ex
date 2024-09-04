@@ -29,37 +29,37 @@ defmodule SICP.Ch1.Ex22 do
   ```
   1_000
   --------------------
-  1009 *** 55µs
-  1013 *** 49µs
-  1019 *** 56µs
-  average: 53.33
+  1009 *** 473.03 ns
+  1013 *** 475.82 ns
+  1019 *** 476.40 ns
+  average: 474.89 ns
   ___________________
 
   10_000
   ___________________
-  10007 *** 697µs
-  10009 *** 509µs
-  10037 *** 512µs
-  average: 572.66
-  growth: 572.66 / 53.33 = 10.73
+  10007 *** 1.47 μs
+  10009 *** 1.46 μs
+  10037 *** 1.45 μs
+  average: 1.46 μs
+  growth: 1.46 / 0.47489 = 3.07
   ___________________
 
   100_000
   ___________________
-  100003 *** 4868µs
-  100019 *** 4919µs
-  100043 *** 4813µs
-  average: 4866.66
-  growth: 4866.66 / 572.66 = 8.49
+  100003 *** 4.50 μs
+  100019 *** 4.50 μs
+  100043 *** 4.48 μs
+  average: 4.49 μs
+  growth: 4.49 / 1.46 = 3.08
   ___________________
 
   1_000_000
   ___________________
-  1000003 *** 35359µs
-  1000033 *** 36395µs
-  1000037 *** 36517µs
-  average: 36090.33
-  growth: 36090.33 / 4866.66 = 7.41
+  1000003 *** 14.09 μs
+  1000033 *** 14.07 μs
+  1000037 *** 14.37 μs
+  average: 14.18 μs
+  growth: 14.18 / 4.49 = 3.16
   ___________________
   ```
 
@@ -68,13 +68,13 @@ defmodule SICP.Ch1.Ex22 do
   ```
   100_000_000
   ___________________
-  100000007 *** 3723325µs
+  100000007 *** 144.95 μs
   ___________________
 
   1_000_000_000
   ___________________
-  1000000007 *** 36530511µs
-  growth: 36530511 / 3723325 = 9.81
+  1000000007 *** 456.98 μs
+  growth: 456.98 / 144.95 = 3.15
   ___________________
   ```
   """
@@ -98,7 +98,7 @@ defmodule SICP.Ch1.Ex22 do
 
   @spec timed_prime_test(non_neg_integer()) :: boolean()
   defp timed_prime_test(n) do
-    result = :timer.tc(fn -> prime?(n) end)
+    result = :timer.tc(fn -> prime?(n) end, :nanosecond)
 
     case result do
       {elapsed_time, true} ->
@@ -117,7 +117,7 @@ defmodule SICP.Ch1.Ex22 do
   end
 
   @spec prime?(non_neg_integer()) :: boolean()
-  defp prime?(n), do: smallest_divisor(n) == n
+  def prime?(n), do: smallest_divisor(n) == n
 
   @spec smallest_divisor(non_neg_integer()) :: integer()
   defp smallest_divisor(n), do: find_divisor(n, 2)
@@ -131,8 +131,8 @@ defmodule SICP.Ch1.Ex22 do
     end
   end
 
-  @spec square(non_neg_integer()) :: float()
-  defp square(n) when n >= 0, do: :math.sqrt(n)
+  @spec square(number()) :: number()
+  defp square(x), do: x * x
 
   @spec divides?(pos_integer(), non_neg_integer()) :: boolean()
   defp divides?(a, b), do: rem(b, a) == 0
