@@ -44,7 +44,7 @@ defmodule SICP.Ch1.Ex24Test do
     Benchee.run(
       %{
         "Ex22 prime?" => fn number -> Ex22.prime?(number) end,
-        "Ex24 fast_prime?" => fn number -> Ex24.fast_prime?(number, 1) end
+        "Ex24 fast_prime?" => fn number -> Ex24.fast_prime?(number, @attempts) end
       },
       inputs: Enum.map(@numbers, fn x -> {x, x} end)
     )

@@ -54,7 +54,7 @@ defmodule SICP.Ch1.Ex24 do
   significantly.
   """
 
-  require Integer
+  import SICP.Common, only: [square: 1, remainder: 2, random: 1, even?: 1]
 
   @attempts 1
 
@@ -98,24 +98,11 @@ defmodule SICP.Ch1.Ex24 do
   end
 
   @spec expmod(pos_integer(), pos_integer(), pos_integer()) :: pos_integer()
-  defp expmod(base, exp, m) do
+  def expmod(base, exp, m) do
     cond do
       exp == 0 -> 1
-      Integer.is_even(exp) -> remainder(square(expmod(base, div(exp, 2), m)), m)
+      even?(exp) -> remainder(square(expmod(base, div(exp, 2), m)), m)
       true -> remainder(base * expmod(base, exp - 1, m), m)
     end
-  end
-
-  @spec square(number()) :: number()
-  defp square(x), do: x * x
-
-  @spec remainder(integer(), pos_integer()) :: non_neg_integer()
-  defp remainder(a, b) do
-    Integer.mod(a, b)
-  end
-
-  @spec random(pos_integer()) :: non_neg_integer()
-  def random(n) do
-    :rand.uniform(n) - 1
   end
 end
