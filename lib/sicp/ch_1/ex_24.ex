@@ -88,7 +88,7 @@ defmodule SICP.Ch1.Ex24 do
   end
 
   @spec fermat_test(pos_integer()) :: boolean()
-  defp fermat_test(n) do
+  def fermat_test(n) do
     try_it(1 + random(n - 1), n)
   end
 
