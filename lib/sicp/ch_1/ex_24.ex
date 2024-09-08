@@ -97,7 +97,7 @@ defmodule SICP.Ch1.Ex24 do
     expmod(a, n, n) == a
   end
 
-  @spec expmod(pos_integer(), pos_integer(), pos_integer()) :: pos_integer()
+  @spec expmod(pos_integer(), pos_integer(), pos_integer()) :: non_neg_integer()
   def expmod(base, exp, m) do
     cond do
       exp == 0 -> 1

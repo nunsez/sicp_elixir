@@ -51,7 +51,7 @@ defmodule SICP.Ch1.Ex25 do
     expmod(a, n, n) == a
   end
 
-  @spec expmod(pos_integer(), pos_integer(), pos_integer()) :: pos_integer()
+  @spec expmod(pos_integer(), pos_integer(), pos_integer()) :: non_neg_integer()
   def expmod(base, exp, m) do
     remainder(fast_expt(base, exp), m)
   end
