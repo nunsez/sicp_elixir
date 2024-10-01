@@ -22,17 +22,18 @@ defmodule SICP.Ch1.Ex29 do
   procedure shown above.
   """
 
-  import SICP.Common, only: [odd?: 1, even?: 1]
+  import SICP.Common, only: [odd?: 1, even?: 1, inc: 1]
 
+  @spec integral((number() -> number()), integer(), integer(), float()) :: number()
   def integral(f, a, b, dx) do
     add_dx = fn x -> x + dx end
     dx * sum(f, a + dx / 2, add_dx, b)
   end
 
+  @spec simpsons_rule(integer(), integer(), integer(), integer()) :: number()
   def simpsons_rule(f, a, b, n) do
     h = (b - a) / n
     yk = fn k -> f.(a + k * h) end
-    inc = fn x -> x + 1 end
 
     term = fn k ->
       cond do
@@ -42,9 +43,10 @@ defmodule SICP.Ch1.Ex29 do
       end * yk.(k)
     end
 
-    h / 3 * sum(term, 0, inc, n)
+    h / 3 * sum(term, 0, &inc/1, n)
   end
 
+  @spec sum((number() -> number()), number(), (number() -> number()), number()) :: number()
   def sum(term, a, next, b) do
     if a > b do
       0

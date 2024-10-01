@@ -8,6 +8,9 @@ defmodule SICP.Common do
 
   require Integer
 
+  @spec inc(number()) :: number()
+  def inc(x), do: x + 1
+
   @spec square(number()) :: number()
   def square(x), do: x * x
 
