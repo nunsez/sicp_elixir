@@ -2,10 +2,9 @@ defmodule SICP.Ch1.Ex30 do
   @moduledoc """
   Task:
 
-  The sum procedure above generates a linear
-  recursion. The procedure can be rewrien so that the sum
-  is performed iteratively. Show how to do this by filling in
-  the missing expressions in the following definition:
+  The sum procedure above generates a linear recursion. The procedure can be
+  rewritten so that the sum is performed iteratively. Show how to do this by
+  filling in the missing expressions in the following definition:
 
   ```scheme
   (define (sum term a next b)
