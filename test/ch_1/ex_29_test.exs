@@ -5,6 +5,7 @@ defmodule SICP.Ch1.Ex29Test do
   import SICP.Ch1.Ex29, only: [simpsons_rule: 4, integral: 4]
   import SICP.Common, only: [cube: 1]
 
+  @tag task: 129
   test "n == 100" do
     assert_in_delta(
       simpsons_rule(&cube/1, 0, 1, 100),
@@ -13,6 +14,7 @@ defmodule SICP.Ch1.Ex29Test do
     )
   end
 
+  @tag task: 129
   test "n == 1000" do
     assert_in_delta(
       simpsons_rule(&cube/1, 0, 1, 1000),
