@@ -26,7 +26,8 @@ defmodule SICP.Ch1.Ex31 do
     product_rec(&Function.identity/1, 1, &inc/1, n)
   end
 
-  @spec product_rec((number() -> number()), number(), (number() -> number()), number()) :: number()
+  @spec product_rec((number() -> number()), number(), (number() -> number()), number()) ::
+          number()
   def product_rec(term, a, next, b) do
     if a > b do
       1
@@ -40,12 +41,14 @@ defmodule SICP.Ch1.Ex31 do
     product_iter(&Function.identity/1, 1, &inc/1, n)
   end
 
-  @spec product_iter((number() -> number()), number(), (number() -> number()), number()) :: number()
+  @spec product_iter((number() -> number()), number(), (number() -> number()), number()) ::
+          number()
   def product_iter(term, a, next, b) do
     iter(term, a, next, b, 1)
   end
 
-  @spec iter((number() -> number()), number(), (number() -> number()), number(), number()) :: number()
+  @spec iter((number() -> number()), number(), (number() -> number()), number(), number()) ::
+          number()
   def iter(term, a, next, b, result) do
     if a > b do
       result

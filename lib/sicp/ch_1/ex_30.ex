@@ -32,7 +32,8 @@ defmodule SICP.Ch1.Ex30 do
     iter(term, a, next, b, 0)
   end
 
-  @spec iter((number() -> number()), number(), (number() -> number()), number(), number()) :: number()
+  @spec iter((number() -> number()), number(), (number() -> number()), number(), number()) ::
+          number()
   def iter(term, a, next, b, result) do
     if a > b do
       result

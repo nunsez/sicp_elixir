@@ -15,11 +15,9 @@ defmodule SICP.Ch1.Ex30Test do
   @tag :benchmark
   @tag task: 130
   test "benchmark" do
-    Benchee.run(
-      %{
-        "Ex29 sum" => fn -> Ex29.sum(&cube/1, 1, &inc/1, 50) end,
-        "Ex30 iter sum" => fn -> Ex30.sum(&cube/1, 1, &inc/1, 50) end
-      }
-    )
+    Benchee.run(%{
+      "Ex29 sum" => fn -> Ex29.sum(&cube/1, 1, &inc/1, 50) end,
+      "Ex30 iter sum" => fn -> Ex30.sum(&cube/1, 1, &inc/1, 50) end
+    })
   end
 end
