@@ -1,4 +1,4 @@
-defmodule SICP.MixProject do
+defmodule Sicp.MixProject do
   use Mix.Project
 
   def project do

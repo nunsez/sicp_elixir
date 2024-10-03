@@ -1,4 +1,4 @@
-# SICP
+# Sicp
 
 **TODO: Add description**
 

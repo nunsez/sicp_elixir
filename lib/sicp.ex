@@ -1,3 +1,3 @@
-defmodule SICP do
+defmodule Sicp do
   @moduledoc false
 end

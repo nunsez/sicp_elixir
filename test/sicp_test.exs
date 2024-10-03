@@ -1,4 +1,4 @@
-defmodule SICPTest do
+defmodule SicpTest do
   use ExUnit.Case
-  doctest SICP
+  doctest Sicp
 end

@@ -1,4 +1,4 @@
-defmodule SICP.Common do
+defmodule Sicp.Common do
   @moduledoc """
   A module of common functions uused in exercises which do not particularly
   participate in solution design but are used only as helpers and can be shared
