@@ -34,4 +34,7 @@ defmodule Sicp.Common do
 
   @spec random(pos_integer()) :: non_neg_integer()
   def random(n), do: :rand.uniform(n) - 1
+
+  @spec average(number(), number()) :: number()
+  def average(a, b), do: (a + b) / 2
 end

@@ -9,6 +9,7 @@ defmodule Sicp.Ch1.S3.Ex35Test do
     1.618_033_988_749_894
   end
 
+  @tag task: 135
   test "golden_ratio" do
     assert_in_delta(solution(), golden_ratio(), tolerance())
   end
