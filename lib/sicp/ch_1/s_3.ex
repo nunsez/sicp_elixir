@@ -26,4 +26,24 @@ defmodule Sicp.Ch1.S3 do
       try1(f, next)
     end
   end
+
+  @spec newtons_method((number() -> number()), number()) :: number()
+  def newtons_method(g, guess) do
+    fixed_point(newton_transform(g), guess)
+  end
+
+  @spec deriv((number() -> number())) :: (number() -> number())
+  def newton_transform(g) do
+    fn x -> x - g.(x) / deriv(g).(x) end
+  end
+
+  @spec deriv((number() -> number()), number()) :: (number() -> number())
+  def deriv(g, dx \\ dx()) do
+    fn x -> (g.(x + dx) - g.(x)) / dx end
+  end
+
+  @spec dx() :: float()
+  def dx do
+    0.000_01
+  end
 end
