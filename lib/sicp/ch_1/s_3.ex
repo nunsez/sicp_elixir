@@ -1,30 +1,37 @@
 defmodule Sicp.Ch1.S3 do
   @moduledoc false
 
+  import Sicp.Common, only: [average: 2]
+
   @spec tolerance() :: float()
   def tolerance do
     0.000_01
   end
 
-  @spec fixed_point((number() -> number()), number()) :: number()
-  def fixed_point(f, first_guess) do
-    try1(f, first_guess)
+  @spec fixed_point((number() -> number()), number(), number()) :: number()
+  def fixed_point(f, first_guess, tolerance \\ tolerance()) do
+    try1(f, first_guess, tolerance)
   end
 
-  @spec close_enough?(number(), number()) :: boolean()
-  def close_enough?(v1, v2) do
-    abs(v1 - v2) < tolerance()
-  end
-
-  @spec try1((number() -> number()), number()) :: number()
-  def try1(f, guess) do
+  @spec try1((number() -> number()), number(), number()) :: number()
+  def try1(f, guess, tolerance) do
     next = f.(guess)
 
-    if close_enough?(guess, next) do
+    if close_enough?(guess, next, tolerance) do
       next
     else
-      try1(f, next)
+      try1(f, next, tolerance)
     end
+  end
+
+  @spec close_enough?(number(), number(), number()) :: boolean()
+  def close_enough?(v1, v2, tolerance \\ tolerance()) do
+    abs(v1 - v2) < tolerance
+  end
+
+  @spec average_damp((number() -> number())) :: (number() -> number())
+  def average_damp(f) do
+    fn x -> average(x, f.(x)) end
   end
 
   @spec newtons_method((number() -> number()), number()) :: number()
